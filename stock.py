@@ -62,8 +62,6 @@ if os.path.exists(img_path):
 else:
     st.error('圖片路徑無效或圖片不存在')
 
-
-
 # 更新用戶點數並返回剩餘點數
 def update_credits(username, amount, reason):
     remaining_credits = 0
@@ -145,15 +143,12 @@ def forgot_password(username):
         logging.error(f"Error during password retrieval: {e}")
         st.error(f"Error: {e}")
 
-
-
-
-# 主應用程序
+# 初始化 session_state
 if 'logged_in' not in st.session_state:
     st.session_state['logged_in'] = False
 
-
-
+if 'username' not in st.session_state:
+    st.session_state['username'] = None
 
 # 主要應用程式
 if not st.session_state['logged_in']:
@@ -198,19 +193,17 @@ else:
         stock_code = st.text_input('台股請輸入股票代號+.TW（例如：2330.TW）')
         
         # 將查詢歷史記錄到資料庫
-        try:
-            with sqlite3.connect('stocktest.db') as conn:
-                cursor = conn.cursor()
-                cursor.execute('INSERT INTO query_history (username, stock_code, query_date) VALUES (?, ?, ?)',
-                               (st.session_state['username'], stock_code, datetime.now()))
-                conn.commit()
-        except sqlite3.Error as e:
-            logging.error(f"Error saving query history: {e}")
-            st.error(f"Error: {e}")
-
-
-        # 檢查是否有輸入股票代號
         if stock_code:
+            try:
+                with sqlite3.connect('stocktest.db') as conn:
+                    cursor = conn.cursor()
+                    cursor.execute('INSERT INTO query_history (username, stock_code, query_date) VALUES (?, ?, ?)',
+                                   (st.session_state['username'], stock_code, datetime.now()))
+                    conn.commit()
+            except sqlite3.Error as e:
+                logging.error(f"Error saving query history: {e}")
+                st.error(f"Error: {e}")
+
             # 檢查剩餘點數是否足夠
             remaining_credits = update_credits(st.session_state['username'], 0, '查詢股票資訊')
             if remaining_credits < 1:
@@ -272,8 +265,6 @@ else:
                     # 使用 st.table 顯示表格
                     st.table(df)
 
-                    # 或使用 st.dataframe 顯示表格
-                    # st.dataframe(df)
                     # 使用 OpenAI API 分析股票代號
                     prompt = f"請先介紹股票代號 {stock_code} 的公司介紹，再根據所顯示股票資訊與財務報表{financials}、估值{valuation_measures}來分析股票代號 {stock_code} 近期走勢和未來預測，並用股票名稱+股票代號回答"
 
@@ -290,7 +281,6 @@ else:
                     analysis_result = response['choices'][0]['message']['content'].strip()
                     st.markdown('### 分析結果：')
                     st.markdown(analysis_result)
-
 
                     # 新增與 GPT-3 對話的區塊
                     st.subheader('與 小助手 對話')
@@ -331,10 +321,8 @@ else:
                 update_credits(st.session_state['username'], amount, '儲值')
                 st.success(f'成功增加 {amount} 點數！')
 
-
     elif page == '歷史查詢':
         st.title('查詢歷史')
-
 
         # 查詢並顯示有效的查詢歷史記錄
         try:
@@ -353,8 +341,6 @@ else:
             logging.error(f"Error fetching query history: {e}")
             st.error(f"Error: {e}")
 
-
-    
     elif page == '點數歷史':
         st.title('點數歷史')
         st.subheader('點數變化記錄')
@@ -372,5 +358,3 @@ else:
         except sqlite3.Error as e:
             logging.error(f"Error fetching credit history: {e}")
             st.error(f"Error: {e}")
-
-        
