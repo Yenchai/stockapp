@@ -46,7 +46,7 @@ def get_base64_of_bin_file(bin_file):
         data = f.read()
     return base64.b64encode(data).decode()
 
-img_path = "股票封面照.png"
+img_path = "11111.jpg"
 if os.path.exists(img_path):
     img_base64 = get_base64_of_bin_file(img_path)
     page_bg_img = f'''
