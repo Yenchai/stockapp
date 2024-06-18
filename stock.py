@@ -211,7 +211,7 @@ else:
                 # 使用 yfinance 獲取股票資訊
                 stock = yf.Ticker(stock_code)
 
-                # 獲取最近5個交易日的股票歷史資料
+                # 獲取最近30個交易日的股票歷史資料
                 history = stock.history(period='1mo')
 
                 # 顯示剩餘點數
@@ -271,7 +271,7 @@ else:
 
                     # 調整為 v1/chat/completions endpoint 的使用方式
                     response = openai.ChatCompletion.create(
-                        model="gpt-3.5-turbo",
+                        model="gpt-4o-2024-05-13",
                         messages=[
                             {"role": "assistant", "content": "您是一個股票分析師。"},
                             {"role": "user", "content": prompt}
