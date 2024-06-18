@@ -308,7 +308,7 @@ else:
         card_number = st.text_input('信用卡號')
         expiry_date = st.text_input('到期日（MM/YY）')
         cvv = st.text_input('CVV', type='password')
-        amount = st.number_input('輸入儲值金額', min_value=1, max_value=100)
+        amount = st.number_input('輸入儲值點數', min_value=1, max_value=100)
 
         if st.button('儲值'):
             if not validate_card_number(card_number):
