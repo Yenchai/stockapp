@@ -283,8 +283,8 @@ else:
 
                     # 獲取並顯示分析結果 
                     analysis_result = response['choices'][0]['message']['content'].strip()
-                    st.write('### 分析結果：')
-                    st.write(analysis_result)
+                    st.markdow('### 分析結果：')
+                    st.markdow(analysis_result)
 
 
                     # 新增與 GPT-3 對話的區塊
@@ -299,8 +299,8 @@ else:
                             ]
                         )
                         answer = response['choices'][0]['message']['content'].strip()
-                        st.write('小助手 的回答：')
-                        st.write(answer)
+                        st.markdow('小助手 的回答：')
+                        st.markdow(answer)
 
                 else:
                     st.write('找不到此股票的資訊。請確認股票代號是否正確。')
