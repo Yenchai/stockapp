@@ -40,12 +40,6 @@ conn.commit()
 # Logging 配置
 logging.basicConfig(level=logging.INFO)
 
-#將本地圖片轉換為Base64
-def get_base64_of_bin_file(bin_file):
-    with open(bin_file, 'rb') as f:
-        data = f.read()
-    return base64.b64encode(data).decode()
-
 # 將本地圖片轉換為Base64
 def get_base64_of_bin_file(bin_file):
     with open(bin_file, 'rb') as f:
@@ -68,8 +62,6 @@ if os.path.exists(img_path):
 else:
     st.error('圖片路徑無效或圖片不存在')
 
-# 顯示一些內容來確認背景是否正確設置
-st.write("這是背景下的文字。如果文字顯示在有背景圖片的環境中，則表示背景設置正確。")
 
 
 # 更新用戶點數並返回剩餘點數
