@@ -150,6 +150,20 @@ def forgot_password(username):
 if 'logged_in' not in st.session_state:
     st.session_state['logged_in'] = False
 
+# 主應用程序
+if 'logged_in' not in st.session_state:
+    st.session_state['logged_in'] = False
+
+# 如果未登錄，顯示登錄表單
+if not st.session_state['logged_in']:
+    st.title('歡迎光臨股票資訊APP')
+    st.title('請登入')
+    username = st.text_input('帳號')
+    password = st.text_input('密碼', type='password')
+    if st.button('登入'):
+        login(username, password)
+
+
 # 主要應用程式
 if not st.session_state['logged_in']:
     st.title('歡迎光臨股票資訊APP')
