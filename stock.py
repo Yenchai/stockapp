@@ -15,7 +15,7 @@ import json
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-import toml
+
 
 # 載入 Secrets
 secrets = st.secrets["openai"]
