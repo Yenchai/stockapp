@@ -54,7 +54,7 @@ if os.path.exists(img_path):
     .stApp {{
       background-image: url("data:image/jpg;base64,{img_base64}");
       background-size: cover;
-      background-color: rgba(255, 255, 255, 0.8);  /* 調整這裡的背景顏色 */
+      background-color: rgba(255, 255, 255, 0.1);  /* 調整這裡的背景顏色 */
     }}
     </style>
     '''
