@@ -15,9 +15,11 @@ import json
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+import toml
 
-# 從環境變量中獲取 OpenAI API 密鑰
-openai_api_key = os.getenv("OPENAI_API_KEY")
+# 載入 Secrets
+secrets = st.secrets["openai"]
+openai_api_key = secrets["api_key"]
 
 # 設置 OpenAI API 密鑰
 openai.api_key = openai_api_key
