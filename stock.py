@@ -270,7 +270,7 @@ else:
 
                     # 調整為 v1/chat/completions endpoint 的使用方式
                     response = openai.ChatCompletion.create(
-                        model="gpt-3.5-turbo",
+                        model="gpt-4o-2024-05-13",
                         messages=[
                             {"role": "assistant", "content": "您是一個股票分析師。"},
                             {"role": "user", "content": prompt}
