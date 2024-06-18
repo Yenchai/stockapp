@@ -177,7 +177,7 @@ else:
     # 右側欄位
     with st.sidebar:
         st.header('功能表')
-        page = st.radio('選擇頁面', ['查詢功能與分析', '儲值', '歷史查詢', '點數歷史'])
+        page = st.radio('選擇頁面', ['主畫面', '儲值', '歷史查詢', '點數歷史'])
 
         # 添加登出按鈕
         if st.button('登出'):
