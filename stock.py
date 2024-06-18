@@ -16,8 +16,11 @@ import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
-# 設定 OpenAI API 金鑰
-openai.api_key = 'sk-proj-6BnNXUlmhSfAt6cpZUndT3BlbkFJ65y61xtRme75w3KYBQR4'
+# 從環境變量中獲取 OpenAI API 密鑰
+openai_api_key = os.getenv("OPENAI_API_KEY")
+
+# 設置 OpenAI API 密鑰
+openai.api_key = openai_api_key
 
 # 初始化資料庫
 conn = sqlite3.connect('stocktest.db')
