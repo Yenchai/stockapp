@@ -288,7 +288,7 @@ else:
                     if user_input:
                         # 調整為 v1/chat/completions endpoint 的使用方式
                         response = openai.ChatCompletion.create(
-                            model="gpt-3.5-turbo",
+                            model="gpt-4o-2024-05-13",
                             messages=[
                                 {"role": "user", "content": user_input}
                             ]
