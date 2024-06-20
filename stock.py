@@ -40,7 +40,7 @@ conn.commit()
 # Logging 配置
 logging.basicConfig(level=logging.INFO)
 
-# 將本地圖片轉換為Base64
+# 將圖片轉換為Base64
 def get_base64_of_bin_file(bin_file):
     with open(bin_file, 'rb') as f:
         data = f.read()
