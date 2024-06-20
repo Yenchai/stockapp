@@ -282,7 +282,7 @@ else:
                     st.markdown('### 分析結果：')
                     st.markdown(analysis_result)
 
-                    # 新增與 GPT-3 對話的區塊
+                    # 新增與 GPT-4o 對話的區塊
                     st.subheader('與 小助手 對話')
                     user_input = st.text_area('請輸入您的問題或對話：', '')
                     if user_input:
