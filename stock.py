@@ -266,7 +266,7 @@ else:
                     st.table(df)
 
                     # 使用 OpenAI API 分析股票代號
-                    prompt = f"請先打印出123之後介紹股票代號 {stock_code} 的公司介紹，再根據所顯示股票資訊與財務報表{financials}、估值{valuation_measures}來分析股票代號 {stock_code} 近期走勢和未來預測，並用股票名稱+股票代號回答，只能用繁體中文回答"
+                    prompt = f"請先介紹股票代號 {stock_code} 的公司介紹，再根據所顯示股票資訊與財務報表{financials}、估值{valuation_measures}來分析股票代號 {stock_code} 近期走勢和未來預測，並用股票名稱+股票代號回答，只能用繁體中文回答"
 
                     # 調整使用方式
                     response = openai.ChatCompletion.create(
